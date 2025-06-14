@@ -1,0 +1,4 @@
+package com.automation.pages.orangehrm;
+
+public class LoginPageOrangeHRM {
+}
