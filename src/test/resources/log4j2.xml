@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+
+    <!-- Properties for log file paths and patterns -->
+    <Properties>
+        <Property name="logPath">reports</Property>
+        <Property name="logPattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n</Property>
+        <Property name="consolePattern">%d{HH:mm:ss.SSS} [%t] %highlight{%-5level} %style{%logger{36}}{cyan} - %msg%n</Property>
+    </Properties>
+
+    <!-- Appenders -->
+    <Appenders>
+
+        <!-- Console Appender -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="${consolePattern}"/>
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+        </Console>
+
+        <!-- File Appender for All Logs -->
+        <File name="FileAppender" fileName="${logPath}/automation.log" append="false">
+            <PatternLayout pattern="${logPattern}"/>
+        </File>
+
+        <!-- Rolling File Appender for Daily Logs -->
+        <RollingFile name="RollingFileAppender"
+                     fileName="${logPath}/automation.log"
+                     filePattern="${logPath}/automation-%d{yyyy-MM-dd}-%i.log.gz">
+            <PatternLayout pattern="${logPattern}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="10"/>
+        </RollingFile>
+
+        <!-- Separate File Appender for Error Logs -->
+        <File name="ErrorFileAppender" fileName="${logPath}/errors.log" append="false">
+            <PatternLayout pattern="${logPattern}"/>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+        </File>
+
+        <!-- Test Results File Appender -->
+        <File name="TestResultsAppender" fileName="${logPath}/test-results.log" append="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} - %msg%n"/>
+        </File>
+
+        <!-- Performance Log Appender -->
+        <File name="PerformanceAppender" fileName="${logPath}/performance.log" append="false">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} - %msg%n"/>
+        </File>
+
+    </Appenders>
+
+    <!-- Loggers -->
+    <Loggers>
+
+        <!-- Selenium WebDriver Logs -->
+        <Logger name="org.openqa.selenium" level="WARN" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- TestNG Logs -->
+        <Logger name="org.testng" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- ExtentReports Logs -->
+        <Logger name="com.aventstack.extentreports" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- HTTP Client Logs (for API testing) -->
+        <Logger name="org.apache.http" level="WARN" additivity="false">
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- Application Package Logs -->
+        <Logger name="com.automation.base" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+        </Logger>
+
+        <Logger name="com.automation.pages" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+        </Logger>
+
+        <Logger name="com.automation.tests" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+            <AppenderRef ref="TestResultsAppender"/>
+        </Logger>
+
+        <Logger name="com.automation.utils" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+        </Logger>
+
+        <!-- Performance Logger -->
+        <Logger name="performance" level="INFO" additivity="false">
+            <AppenderRef ref="PerformanceAppender"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+
+        <!-- API Testing Logger -->
+        <Logger name="api" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- Database Logger -->
+        <Logger name="database" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- Security Testing Logger -->
+        <Logger name="security" level="INFO" additivity="false">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+        </Logger>
+
+        <!-- Third-party library logs -->
+        <Logger name="io.github.bonigarcia.wdm" level="WARN" additivity="false">
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <Logger name="org.springframework" level="WARN" additivity="false">
+            <AppenderRef ref="FileAppender"/>
+        </Logger>
+
+        <!-- Root Logger -->
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="FileAppender"/>
+            <AppenderRef ref="ErrorFileAppender"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>

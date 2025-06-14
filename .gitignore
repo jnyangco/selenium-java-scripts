@@ -1,38 +1,343 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+#target/
+#!.mvn/wrapper/maven-wrapper.jar
+#!**/src/main/**/target/
+#!**/src/test/**/target/
+#
+#### IntelliJ IDEA ###
+#.idea/modules.xml
+#.idea/jarRepositories.xml
+#.idea/compiler.xml
+#.idea/libraries/
+#*.iws
+#*.iml
+#*.ipr
+#
+#### Eclipse ###
+#.apt_generated
+#.classpath
+#.factorypath
+#.project
+#.settings
+#.springBeans
+#.sts4-cache
+#
+#### NetBeans ###
+#/nbproject/private/
+#/nbbuild/
+#/dist/
+#/nbdist/
+#/.nb-gradle/
+#build/
+#!**/src/main/**/build/
+#!**/src/test/**/build/
+#
+#### VS Code ###
+#.vscode/
+#
+#### Mac OS ###
+#.DS_Store
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
+
+# ======================================================================
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Virtual machine crash logs
+hs_err_pid*
+replay_pid*
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# Gradle
+.gradle
+**/build/
+!src/**/build/
+gradle-app.setting
+!gradle-wrapper.jar
+!gradle-wrapper.properties
+
+# IDE Files
+## IntelliJ IDEA
+.idea/
 *.iws
 *.iml
 *.ipr
+out/
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
+## Eclipse
 .project
-.settings
-.springBeans
-.sts4-cache
+.classpath
+.settings/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
 
-### NetBeans ###
+## NetBeans
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
-### VS Code ###
+## VS Code
 .vscode/
+*.code-workspace
 
-### Mac OS ###
+# OS Files
+## Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+## macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+## Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Test Reports and Output
+reports/
+test-output/
+screenshots/
+videos/
+allure-results/
+extent-reports/
+surefire-reports/
+failsafe-reports/
+
+# Selenium and WebDriver
+drivers/
+*.log
+geckodriver.log
+chromedriver.log
+edgedriver.log
+
+# Test Data (sensitive)
+**/testdata/sensitive/
+**/testdata/production/
+**/*password*
+**/*secret*
+**/*key*
+
+# Environment specific files
+.env
+.env.local
+.env.*.local
+config/local.properties
+config/production.properties
+
+# Backup files
+*.backup
+*.bkp
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+.temp/
+
+# Node.js (if using any Node tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if using Python scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Docker
+.dockerignore
+Dockerfile.*
+docker-compose.override.yml
+
+# JMeter (if using for performance testing)
+*.jtl
+jmeter.log
+
+# TestNG
+test-output/
+testng-results.xml
+
+# Cucumber (if using BDD)
+cucumber-reports/
+
+# Allure (if using Allure reports)
+.allure/
+allure-report/
+
+# JaCoCo (if using code coverage)
+jacoco.exec
+jacoco/
+
+# SonarQube
+.sonar/
+.scannerwork/
+
+# Database files (if using embedded databases for testing)
+*.db
+*.sqlite
+*.h2.db
+
+# AWS (if using AWS services)
+.aws/
+
+# Azure (if using Azure services)
+.azure/
+
+# Google Cloud (if using GCP)
+.gcloud/
+
+# SSH keys
+*.pem
+*.key
+id_rsa*
+id_dsa*
+id_ecdsa*
+id_ed25519*
+
+# SSL certificates
+*.crt
+*.cer
+*.p12
+*.pfx
+
+# Configuration files with sensitive data
+application-local.properties
+application-dev.properties
+application-prod.properties
+
+# Cache directories
+.cache/
+cache/
+
+# Editor specific
+## Vim
+*.swp
+*.swo
+*~
+
+## Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+## Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Test specific ignores
+test-classes/
+test-reports/
+error-screenshots/
+failed-tests/
+
+# Performance test results
+performance-results/
+load-test-results/
+
+# Mobile testing (if using Appium)
+*.apk
+*.ipa
+*.app
+
+# Browser logs and crash dumps
+chrome_debug.log
+firefox_profile/
+edge_data/
+
+# Custom application logs
+automation.log.*
+test-execution.log
+debug.log
+error.log
+performance.log
+
+# Workspace specific
+.metadata/
+.recommenders/
+RemoteSystemsTempFiles/
+
+# Spring Boot (if using Spring Boot for test services)
+*.jar.original
+
+# Application specific
+application.pid

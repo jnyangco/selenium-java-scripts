@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="RegressionTestSuite" verbose="1" parallel="methods" thread-count="4">
+
+    <!-- Suite Parameters -->
+    <parameter name="browser" value="chrome"/>
+    <parameter name="environment" value="local"/>
+    <parameter name="headless" value="false"/>
+
+    <!-- Suite Listeners -->
+    <listeners>
+        <listener class-name="com.automation.listeners.TestListener"/>
+        <listener class-name="com.automation.listeners.ExtentReportListener"/>
+        <listener class-name="com.automation.listeners.ScreenshotListener"/>
+        <listener class-name="com.automation.listeners.RetryListener"/>
+    </listeners>
+
+    <!-- SauceDemo Regression Tests -->
+    <test name="SauceDemoRegressionTests" preserve-order="false">
+        <parameter name="application" value="saucedemo"/>
+
+        <groups>
+            <run>
+                <include name="regression"/>
+                <include name="saucedemo"/>
+            </run>
+        </groups>
+
+        <classes>
+            <!-- Login Tests -->
+            <class name="com.automation.tests.saucedemo.LoginTestSaucedemo">
+                <methods>
+                    <include name="testValidLogin"/>
+                    <include name="testInvalidPassword"/>
+                    <include name="testInvalidUsername"/>
+                    <include name="testEmptyCredentials"/>
+                    <include name="testEmptyPassword"/>
+                    <include name="testLockedOutUser"/>
+                    <include name="testCloseErrorMessage"/>
+                    <include name="testLoginPageElements"/>
+                    <include name="testLoginPageTitle"/>
+                    <include name="testClearFields"/>
+                </methods>
+            </class>
+
+            <!-- Product Tests -->
+            <class name="com.automation.tests.saucedemo.ProductTestSaucedemo">
+                <methods>
+                    <include name="testProductsDisplayed"/>
+                    <include name="testProductPrices"/>
+                    <include name="testAddSingleProductToCart"/>
+                    <include name="testAddMultipleProductsToCart"/>
+                    <include name="testRemoveProductFromCart"/>
+                    <include name="testSortProductsByNameAscending"/>
+                    <include name="testSortProductsByNameDescending"/>
+                    <include name="testSortProductsByPriceLowToHigh"/>
+                    <include name="testSortProductsByPriceHighToLow"/>
+                    <include name="testHamburgerMenu"/>
+                    <include name="testAllSortOptions"/>
+                    <include name="testCartBadgeVisibility"/>
+                    <include name="testNavigateToCart"/>
+                </methods>
+            </class>
+
+            <!-- Cart Tests -->
+            <class name="com.automation.tests.saucedemo.CartTestSaucedemo">
+                <methods>
+                    <include name="testCartPageElements"/>
+                    <include name="testRemoveItemFromCart"/>
+                    <include name="testCartQuantityUpdate"/>
+                    <include name="testContinueShoppingButton"/>
+                    <include name="testCheckoutButton"/>
+                </methods>
+            </class>
+
+            <!-- Checkout Tests -->
+            <class name="com.automation.tests.saucedemo.CheckoutTestSaucedemo">
+                <methods>
+                    <include name="testCheckoutProcess"/>
+                    <include name="testCheckoutValidation"/>
+                    <include name="testOrderSummary"/>
+                    <include name="testOrderCompletion"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- OrangeHRM Regression Tests -->
+    <test name="OrangeHRMRegressionTests" preserve-order="false">
+        <parameter name="application" value="orangehrm"/>
+
+        <groups>
+            <run>
+                <include name="regression"/>
+                <include name="orangehrm"/>
+            </run>
+        </groups>
+
+        <classes>
+            <!-- Login Tests -->
+            <class name="com.automation.tests.orangehrm.LoginTestOrangeHRM">
+                <methods>
+                    <include name="testValidLogin"/>
+                    <include name="testInvalidCredentials"/>
+                    <include name="testEmptyCredentials"/>
+                    <include name="testLoginPageElements"/>
+                </methods>
+            </class>
+
+            <!-- Dashboard Tests -->
+            <class name="com.automation.tests.orangehrm.DashboardTestOrangeHRM">
+                <methods>
+                    <include name="testDashboardElementsDisplayed"/>
+                    <include name="testSidebarNavigation"/>
+                    <include name="testUserProfileMenu"/>
+                    <include name="testSearchFunctionality"/>
+                </methods>
+            </class>
+
+            <!-- Employee Management Tests -->
+            <class name="com.automation.tests.orangehrm.EmployeeTestOrangeHRM">
+                <methods>
+                    <include name="testAddEmployee"/>
+                    <include name="testSearchEmployee"/>
+                    <include name="testEditEmployee"/>
+                    <include name="testDeleteEmployee"/>
+                </methods>
+            </class>
+
+            <!-- Menu Navigation Tests -->
+            <class name="com.automation.tests.orangehrm.NavigationTestOrangeHRM">
+                <methods>
+                    <include name="testAllMenuNavigation"/>
+                    <include name="testBreadcrumbNavigation"/>
+                    <include name="testUrlValidation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <!-- Cross-Browser Tests (Optional) -->
+    <test name="CrossBrowserTests" enabled="false">
+        <parameter name="browser" value="firefox"/>
+
+        <groups>
+            <run>
+                <include name="smoke"/>
+                <include name="crossbrowser"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="com.automation.tests.saucedemo.LoginTestSaucedemo">
+                <methods>
+                    <include name="testValidLogin"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
